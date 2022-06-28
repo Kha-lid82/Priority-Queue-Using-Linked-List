@@ -1,8 +1,6 @@
 # Priority-Queue-Using-Linked-List
 Priority Queue is more specialized data structure than Queue. Like ordinary queue, priority queue has same method but with a major difference. In Priority queue items are ordered by key value so that item with the lowest value of key is at front and item with the highest value of key is at rear or vice versa. So we're assigned priority to item based on its key value. Lower the value, higher the priority. Following are the principal methods of a Priority Queue. 
-Basic Operations
-•	insert / enqueue − add an item to the rear of the queue.
-•	remove / dequeue − remove an item from the front of the queue.
+
 ALGORITHM OF THE PROGRAM
 
 Step 1: Start
