@@ -1,0 +1,111 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void AddEntry();
+void Send();
+void View();
+struct node
+{
+int priority;
+char info;
+struct node *link;
+}*front = NULL;
+
+void AddEntry()
+{
+struct node *tmp,*q;
+int item_priority;
+char added_item;
+tmp = (struct node *) malloc (sizeof(struct node));
+printf("\n------------------------------------------------------------------------------\n");
+printf("\nInput Entry added in the queue : ");
+scanf("\n %c",&added_item);
+printf("\n\nEnter its priority : ");
+scanf("%d",&item_priority);
+printf("\n\n------------------------------------------------------------------------------\n");
+tmp->info = added_item;
+tmp->priority = item_priority;
+if( front == NULL || item_priority < front->priority )
+{
+tmp->link = front;
+front = tmp;
+}
+else
+{
+q = front;
+while( q->link != NULL && q->link->priority <= item_priority ) q=q->link;
+tmp->link = q->link;
+q->link = tmp;
+}
+}
+void Send()
+{
+struct node *tmp;
+if(front == NULL)
+{
+printf("\n--------------------------------------------------------------------");
+printf("\n\n No More Entry In Queue \n");
+printf("\n------------------------------------------------------------------------");
+}
+else
+{
+tmp = front;
+printf("\n----------------------------------------------------------------------------\n");
+printf("\n\n Send patient name %c\n",tmp->info);
+printf("\n-----------------------------------------------------------------------------\n\n");
+front = front->link;
+free(tmp);
+}
+}
+
+void View()
+{
+struct node *ptr;
+ptr = front;
+if(front == NULL)
+{
+printf("\n-----------------------------------------------------------------------");
+printf("\n\n No More Entry In Q \n");
+printf("\n--------------------------------------------------------------------------");
+}
+else
+{
+printf("\n\n---------------------- Queue --------------------------------\n\n");
+printf("Priority\tData\n\n");
+while(ptr != NULL)
+{
+printf("%d \t\t%c\n\n",ptr->priority,ptr->info);
+ptr = ptr->link;
+}
+}
+}
+void main()
+{
+int choice;
+clrscr();
+printf("\n\n PATIENT ENTRY USING PRIORITY QUEUE \n\n");
+while(1)
+{
+printf("\n\n--------------------------- MAIN MENU -------------------------------------\n\n");
+printf("1.Add New Patient entry.\n\n");
+printf("2.Send the Patient .\n\n");
+printf("3.View Remaining Patient .\n\n");
+printf("4.Quit.\n\n");
+printf("Enter your choice : ");
+scanf("%d", &choice);
+switch(choice)
+{
+case 1:
+AddEntry();
+break;
+case 2:
+Send();
+break;
+case 3:
+View();
+break;
+default :
+printf("INVALID CHOICE TRY AGAIN!!!!!!1\n");
+}
+}
+}
