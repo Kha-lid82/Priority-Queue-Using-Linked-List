@@ -20,3 +20,4 @@ Step 5: For viewing list you want to assing  *ptr pointer
               Then traverse it and print the information one by one
 Step 6: Stop
 
+*DISCLAIMER if conio.h library or clrscr(); function gives error ,then remove both line from code program will run properly without error :)   
